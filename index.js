@@ -13,9 +13,8 @@ app.use(express.json());
 
 routes(app);
 
-const query = 'mongodb+srv://tpsoict28:123@cluster0.6acs5.mongodb.net/W6';
 
-mongoose.connect(query)
+mongoose.connect(process.env.MONGODB_URI)
     .then(()=>{
         console.log('Connected to Db Successfully');
     })
@@ -23,6 +22,6 @@ mongoose.connect(query)
         console.log(err);
     })
 
-app.listen(3001, () => {
+app.listen(process.env.PORT, () => {
     console.log(`Server is running!`);
 })
